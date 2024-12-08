@@ -9,9 +9,6 @@ const Form = ({getWeather}) => {
         setCity('') //очистили строку
     }
 
-    // const handleChangeCity = (e) => {  // обработчик: при смене города
-    //     setCity(e.target.value.trim());
-    // }
     return (
         <form onSubmit={getCity}>
            <input onChange={e => setCity(e.target.value.trim())} type="text" value={city.toUpperCase()}/>

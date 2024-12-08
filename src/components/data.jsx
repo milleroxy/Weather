@@ -1,28 +1,33 @@
 import Form from "./form.jsx";
 import Weather from "./weather.jsx";
-import {useState} from "react";
 import {api_key, base_url} from "../utils/constants.js";
+import {useDispatch, useSelector} from "react-redux";
+import {error, request, success} from "../actions/weatherAction.js";
 
 const Data = () => {
-    const [weatherInfo, setWeatherInfo] = useState({});
-    const [message, setMessage] = useState("Enter city name");
+    const { weatherInfo, message } = useSelector((state) => state.weather || { weatherInfo: null, message: '' });
+    const dispatch = useDispatch();
+
     const getWeather = city => {
+        dispatch (request(city));
+
         fetch(`${base_url}?q=${city}&appid=${api_key}&units=metric`)
             .then(result => result.json())
             .then(data => {
 
-                setWeatherInfo({
+                dispatch (
+                success({
                     country: data.sys.country,
                     city: data.name,
                     temp: data.main.temp,
                     pressure: data.main.pressure,
                     sunset: new Date (data.sys.sunset * 1000)
-                })
-                setMessage('')
+                }))
             })
-        .catch(error => {
-            console.log(error);
-            setMessage('enter correct city name');
+
+        .catch(err => {
+            console.log(err);
+            dispatch(error(err.message || 'Enter correct city name'));
         })
     }
     return (

@@ -3,7 +3,7 @@ const Weather = ({weather, message}) => {
         return (
             <div>{message}</div>
         )
-    } else {
+    } if (weather){
         return (
             <div className={'infoWeath'}>
                 {!message &&
