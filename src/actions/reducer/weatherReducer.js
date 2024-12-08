@@ -1,9 +1,12 @@
 import { ERROR, REQUEST, SUCCESS } from "../weatherAction.js";
 
 const initialState = {
-    city: '',
-    weatherInfo: null,
-    message: 'Enter city name',
+        country: 'country',
+        city: 'city',
+        temp: 0,
+        pressure: 0,
+        sunset: new Date(),
+        message:'Enter correct city name',
 };
 
 
@@ -12,19 +15,22 @@ export const weatherReducer = (state = initialState, action) => {
         case REQUEST:
             return {
                 ...state,
-                city: action.payload.city,
-                loading: true,
+                message: 'Loading...',
             };
         case SUCCESS:
             return {
                 ...state,
-                weatherInfo: action.payload.weatherInfo,
-                message: action.payload.message
+                country: action.payload.country,
+                city: action.payload.city,
+                temp: action.payload.temp,
+                pressure: action.payload.pressure,
+                sunset: action.payload.sunset,
+                message: '',
             };
         case ERROR:
             return {
                 ...state,
-                message: action.payload.message,
+                message: 'This city is not founded',
             };
         default:
             return state;

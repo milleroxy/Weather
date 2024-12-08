@@ -1,12 +1,16 @@
-const Weather = ({weather, message}) => {
-    if(message) {
+import {useSelector} from "react-redux";
+
+const Weather = ({message}) => {
+    const weather = useSelector(state => state.weather)
+
+    if(weather.message) {
         return (
-            <div>{message}</div>
+            <div>{weather.message}</div>
         )
-    } if (weather){
+    } else {
         return (
             <div className={'infoWeath'}>
-                {!message &&
+                {!weather.message &&
                     <>
                         <p>Location: {weather.country}, {weather.city}</p>
                         <p>Temp: {weather.temp}</p>
@@ -14,7 +18,7 @@ const Weather = ({weather, message}) => {
                         <p>Sunset: {weather.sunset.toLocaleTimeString()}</p>
                     </>
                 }
-                {message}
+                {weather.message}
             </div>
         )
     }

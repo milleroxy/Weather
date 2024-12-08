@@ -2,17 +2,15 @@ export const REQUEST = 'REQUEST';
 export const SUCCESS = 'SUCCESS';
 export const ERROR = 'ERROR';
 
-export const request = (city) => ({
+export const request = () => ({
     type: REQUEST,
-    payload: {city}
 })
 
 export const success = (weatherInfo) => ({
         type: SUCCESS,
-        payload: {weatherInfo}
+        payload: weatherInfo
     })
 
- export const error = (message) => ({
+ export const error = () => ({
          type: ERROR,
-         payload: {message}
      })

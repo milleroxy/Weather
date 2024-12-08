@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {error, request, success} from "../actions/weatherAction.js";
 
 const Data = () => {
-    const { weatherInfo, message } = useSelector((state) => state.weather || { weatherInfo: null, message: '' });
+
     const dispatch = useDispatch();
 
     const getWeather = city => {
@@ -14,7 +14,6 @@ const Data = () => {
         fetch(`${base_url}?q=${city}&appid=${api_key}&units=metric`)
             .then(result => result.json())
             .then(data => {
-
                 dispatch (
                 success({
                     country: data.sys.country,
@@ -23,17 +22,19 @@ const Data = () => {
                     pressure: data.main.pressure,
                     sunset: new Date (data.sys.sunset * 1000)
                 }))
+
             })
+
 
         .catch(err => {
             console.log(err);
-            dispatch(error(err.message || 'Enter correct city name'));
+            dispatch(error());
         })
     }
     return (
         <div>
            <Form getWeather={getWeather}/>
-           <Weather message={message} weather={weatherInfo}/>
+           <Weather/>
         </div>
     );
 };

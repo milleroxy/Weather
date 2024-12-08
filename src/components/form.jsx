@@ -1,12 +1,12 @@
 import {useState} from "react";
 
 const Form = ({getWeather}) => {
-    const [city, setCity] = useState('') // state доступен везде - переменная состояния и функция меняющая ее состояние
+    const [city, setCity] = useState('')
 
     const getCity =(e) => {
         e.preventDefault();
         getWeather(city);
-        setCity('') //очистили строку
+        setCity('')
     }
 
     return (
