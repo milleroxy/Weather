@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
 
 const Weather = () => {
-    const message = useSelector(state => state.message);
-    const weather = useSelector(state => state.weatherInfo);
+    const message = useSelector(state => state.weather.message);
+    const weather = useSelector(state => state.weather.weatherInfo);
 
     return (
         <div className={'infoWeath'}>

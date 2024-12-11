@@ -1,7 +1,10 @@
-import {applyMiddleware, legacy_createStore as createStore} from "redux";
-import {weatherReducer} from "../reducers/weatherReducer.js";
+import {configureStore} from "@reduxjs/toolkit";
+import weatherReducer from "../features/weather/weatherSlice.js";
 
-import {thunk} from "redux-thunk";
-import logger from "redux-logger";
 
-export const store = createStore(weatherReducer, applyMiddleware(thunk,logger));
+
+export const store = configureStore({
+    reducer:{
+        weather: weatherReducer,
+    }
+})
