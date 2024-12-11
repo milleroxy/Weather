@@ -1,12 +1,16 @@
-export const REQUEST = 'REQUEST';
-export const SUCCESS = 'SUCCESS';
-export const ERROR = 'ERROR';
+export const PUT_WEATHER_INFO = 'PUT_WEATHER_INFO';
+export const PUT_MESSAGE = 'PUT_MESSAGE';
 
-export const request = () => ({type: 'REQUEST'});
+export const putWeatherInfo = weatherInfo => {
+    return {
+        type: PUT_WEATHER_INFO,
+        payload: weatherInfo
+    }
+}
 
-export const success = (weather) => ({
-    type: 'SUCCESS',
-    payload: weather,
-});
-
-export const error = () => ({type: 'ERROR'});
+export const putMessage = message => {
+    return {
+        type: PUT_MESSAGE,
+        payload: message
+    }
+}

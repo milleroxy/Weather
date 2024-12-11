@@ -1,8 +1,8 @@
 const Info = () => {
     return (
         <div>
-            <h1>Weather application</h1>
-            <p>Your city weather</p>
+           <h1>Weather application</h1>
+           <p>Your city weather</p>
         </div>
     );
 };

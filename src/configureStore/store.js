@@ -1,7 +1,4 @@
 import {legacy_createStore as createStore} from "redux";
-import {rootReducer} from "../reducers/rootReducer.js";
+import {weatherReducer} from "../reducers/weatherReducer.js";
 
-
-
-export const store = createStore(rootReducer);
-
+export const store = createStore(weatherReducer);
