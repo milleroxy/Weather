@@ -11,7 +11,7 @@ export const fetchWeather = (city) => {
                     city: data.name,
                     temp: data.main.temp,
                     pressure: data.main.pressure,
-                    sunset: new Date(data.sys.sunset * 1000)
+                    sunset: data.sys.sunset * 1000
                 }))
                 dispatch(putMessage(''))
             })
